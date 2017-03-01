@@ -1,3 +1,5 @@
+%{?_javapackages_macros:%_javapackages_macros}
+
 %define commit cefd96450947bad93eff9d4b5fc95af25dcb9ae3
 %define shortcommit %(c=%{commit}; echo ${c:0:7})
 
@@ -11,15 +13,14 @@ Url:		https://github.com/jitsi/%{name}
 Source0:	https://github.com/jitsi/%{name}/archive/%{commit}/%{name}-%{commit}.zip
 BuildArch:	noarch
 
-BuildRequires:  maven-local
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  weupnp #mvn(org.bitlet:weupnp)
-BuildRequires:  jain-sip-ri-ossonly #mvn(org.jitsi:jain-sip-ri-ossonly)
-BuildRequires:  java-sdp-nist-bridge #mvn(org.opentelecoms.sdp:java-sdp-nist-bridge)
+BuildRequires:	maven-local
+BuildRequires:	mvn(junit:junit)
+BuildRequires:	mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:	mvn(org.bitlet:weupnp)
+BuildRequires:	mvn(org.jitsi:jain-sip-ri-ossonly)
+BuildRequires:	mvn(org.opentelecoms.sdp:java-sdp-nist-bridge)
 
 %description
-# from the old hompage
 The Interactive Connectivity Establishment (ICE) protocol combines various NAT
 traversal utilities such as the STUN and TURN protocols in order to offer a
 powerful mechanism that allows Offer/Answer based protocols such as SIP and
@@ -118,10 +119,10 @@ find . -name "*.class" -delete
 #  testPingPongShortSegments(org.ice4j.pseudotcp.PseudoTcpTestPingPong)  Time elapsed: 0.27 sec  <<< FAILURE!
 #  junit.framework.AssertionFailedError: Error in thread: LocalClockThread : null
 %pom_xpath_inject "pom:plugin[pom:artifactId[./text()='maven-bundle-plugin']]/pom:configuration" "
-	<excludes>
-		<!--exclude>**/PseudoTcpTestPingPong.java</exclude-->
-		<exclude>**/PseudoTcpTestRecvWindow.java</exclude>
-	</excludes>"
+<excludes>
+	<!--exclude>**/PseudoTcpTestPingPong.java</exclude-->
+	<exclude>**/PseudoTcpTestRecvWindow.java</exclude>
+</excludes>"
 
 # Fix jar name
 %mvn_file :%{name} %{name}-%{version} %{name}
