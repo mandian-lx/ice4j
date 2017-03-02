@@ -128,8 +128,7 @@ find . -name "*.class" -delete
 %mvn_file :%{name} %{name}-%{version} %{name}
 
 %build
-
-%mvn_build -- -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.source=1.7 -Dmaven.compiler.target=1.7
+%mvn_build -- -Dproject.build.sourceEncoding=UTF-8
 
 %install
 %mvn_install
