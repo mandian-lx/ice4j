@@ -7,7 +7,7 @@ Summary:	An implementation of the ICE protocol in Java
 Name:		ice4j
 Version:	1.0
 Release:	1
-License:	ALS 2.0
+License:	ASL 2.0
 Group:		Development/Java
 Url:		https://github.com/jitsi/%{name}
 Source0:	https://github.com/jitsi/%{name}/archive/%{commit}/%{name}-%{commit}.zip
@@ -118,7 +118,7 @@ find . -name "*.class" -delete
 #  Tests run: 46, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 40.921 sec <<< FAILURE! - in org.ice4j.PseudoTcpTestSuite
 #  testPingPongShortSegments(org.ice4j.pseudotcp.PseudoTcpTestPingPong)  Time elapsed: 0.27 sec  <<< FAILURE!
 #  junit.framework.AssertionFailedError: Error in thread: LocalClockThread : null
-%pom_xpath_inject "pom:plugin[pom:artifactId[./text()='maven-bundle-plugin']]/pom:configuration" "
+%pom_xpath_inject "pom:plugin[pom:artifactId[./text()='maven-surefire-plugin']]/pom:configuration" "
 <excludes>
 	<!--exclude>**/PseudoTcpTestPingPong.java</exclude-->
 	<exclude>**/PseudoTcpTestRecvWindow.java</exclude>
@@ -128,7 +128,7 @@ find . -name "*.class" -delete
 %mvn_file :%{name} %{name}-%{version} %{name}
 
 %build
-%mvn_build -- -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.source=1.7 -Dmaven.compiler.target=1.7
+%mvn_build -- -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8
 
 %install
 %mvn_install
