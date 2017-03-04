@@ -120,7 +120,7 @@ find . -name "*.class" -delete
 #  junit.framework.AssertionFailedError: Error in thread: LocalClockThread : null
 %pom_xpath_inject "pom:plugin[pom:artifactId[./text()='maven-surefire-plugin']]/pom:configuration" "
 <excludes>
-	<exclude>org.ice4j.pseudotcp.PseudoTcpTestRecvWindow</exclude>
+	<exclude>org.ice4j.pseudotcp.PseudoTcpTestRecvWindow*</exclude>
 </excludes>"
 
 # Fix jar name
